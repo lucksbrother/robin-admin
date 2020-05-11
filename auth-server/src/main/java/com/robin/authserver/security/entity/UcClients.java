@@ -40,16 +40,12 @@ public class UcClients {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String clientId;
-    private Long userId;
     private String clientName;
     private String clientSecret;
-    private String clientUrl;
-    private String clientLogoUrl;
     private String registeredRedirectUri;
     private String AuthorizedGrantTypes;
     private String resourceIds;
     private String scope;
-    private String extra;
     private Date createdAt;
     private Date updatedAt;
     private Integer accessTokenValiditySeconds;
