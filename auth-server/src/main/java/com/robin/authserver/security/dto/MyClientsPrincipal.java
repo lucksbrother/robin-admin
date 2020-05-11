@@ -81,8 +81,6 @@ public class MyClientsPrincipal implements ClientDetails {
     public Map<String, Object> getAdditionalInformation() {
         Map<String, Object> ad = new HashMap();
         ad.put("clientName", ucClients.getClientName());
-        ad.put("clientUrl", ucClients.getClientUrl());
-        ad.put("clientLogoUrl", ucClients.getClientLogoUrl());
         return Collections.unmodifiableMap(ad);
     }
 }

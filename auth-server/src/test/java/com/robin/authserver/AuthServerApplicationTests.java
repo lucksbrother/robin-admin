@@ -10,4 +10,9 @@ class AuthServerApplicationTests {
 	void contextLoads() {
 	}
 
+
+	@Test
+	void test(){
+
+	}
 }
