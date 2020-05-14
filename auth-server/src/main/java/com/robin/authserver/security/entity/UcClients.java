@@ -34,11 +34,8 @@ comment '用户表';
 
 @Data
 @Entity
-public class UcClients {
+public class UcClients extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String clientId;
     private String clientName;
     private String clientSecret;
@@ -46,8 +43,6 @@ public class UcClients {
     private String AuthorizedGrantTypes;
     private String resourceIds;
     private String scope;
-    private Date createdAt;
-    private Date updatedAt;
     private Integer accessTokenValiditySeconds;
     private Integer refreshTokenValiditySeconds;
 }

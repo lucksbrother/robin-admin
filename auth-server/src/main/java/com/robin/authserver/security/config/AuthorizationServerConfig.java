@@ -33,12 +33,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
      * 配置授权服务器的安全，意味着/oauth/token端点和/oauth/authorize端点都应该是安全的。
      * 默认的设置覆盖了绝大多数需求，所以一般情况下不需要做任何事情。
      * 如不配置security.allowFormAuthenticationForClients(); 无法通过/oauth/token访问客户端token
+     *
      * @param security
      */
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         security.allowFormAuthenticationForClients()
-        .checkTokenAccess("permitAll()");
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("permitAll()");
     }
 
     /**
@@ -76,8 +78,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public TokenStore jdbcTokenStore() {
         return new InMemoryTokenStore();
     }
-
-
 
 
 }

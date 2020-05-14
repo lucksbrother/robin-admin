@@ -10,19 +10,11 @@ import java.util.Date;
 
 @Data
 @Entity
-public class UcUsers {
+public class UcUsers extends BaseEntity{
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
   private String username;
   private String password;
   private Long enabled;
   private Long locked;
-  private Date createdAt;
-  private Date updatedAt;
-
-
-  
 
 }

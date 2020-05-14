@@ -20,6 +20,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.*;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,13 +48,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         log.info("SecurityConfiguration中配置HttpSecurity对象执行");
         http.authorizeRequests()
-                .antMatchers("/dist/**","/plugins/**").permitAll()
+                .antMatchers("/admin/**").hasRole("admin")
+                .antMatchers("/user/**").hasRole("user")
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/dist/**", "/plugins/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login.html").loginProcessingUrl("/auth/form").permitAll()
                 .and().csrf().disable();
-
     }
+
 
     /**
      * 将AuthenticationManager暴露到bean中
@@ -64,6 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 可自定义继承实现验证权限操作（例如添加验证码校验逻辑，黑白名单检查等）
+     *
      * @return
      */
     @Bean
@@ -76,6 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 密码加密方式配置，可继承后自定义加密，比对方法
+     *
      * @return
      */
     @Bean
