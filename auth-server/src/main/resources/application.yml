@@ -7,6 +7,9 @@ spring:
     password: kuku143
     username: root
     url: jdbc:mysql://221.215.133.158:3333/uc?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT
+  redis:
+    host: localhost
+    password:
   jpa:
     hibernate:
       ddl-auto: update

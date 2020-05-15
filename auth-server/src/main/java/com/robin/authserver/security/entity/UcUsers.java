@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Data
 @Entity
-public class UcUsers extends BaseEntity{
+public class UcUsers extends BaseEntity {
 
   private String username;
   private String password;
